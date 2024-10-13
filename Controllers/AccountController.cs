@@ -61,24 +61,27 @@ namespace SampleSecureWeb.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(LoginViewModel loginViewModel)
         {
-            User? user = null;
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Error = "Invalid login attempt.";
+                return View(loginViewModel);
+            }
+
+            var user = new User
+            {
+                Username = loginViewModel.Username,
+                Password = loginViewModel.Password
+            };
 
             try
             {
-                if (ModelState.IsValid)
+                var loginUser = _userData.Login(user); // Memanggil metode Login di IUser
+                if (loginUser != null)
                 {
-                    user = new User
-                    {
-                        Username = loginViewModel.Username,
-                        Password = loginViewModel.Password
-                    };
-
-                    var loginUser = _userData.Login(user);
-
                     var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, loginUser.Username)
-            };
+                    {
+                        new Claim(ClaimTypes.Name, loginUser.Username)
+                    };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var principal = new ClaimsPrincipal(identity);
@@ -90,22 +93,13 @@ namespace SampleSecureWeb.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ViewBag.Error = "Invalid login attempt.";
-                }
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
             }
 
-            if (user != null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            ViewBag.Message = "Invalid username or password";
+            ViewBag.Error = "Invalid username or password";
             return View(loginViewModel);
         }
     }

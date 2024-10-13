@@ -15,13 +15,20 @@ public class StudentController : Controller
 
     public IActionResult Index()
     {
-        var students = _studentData.GetStudents();
-        return View(students); 
+        if (User.Identity.IsAuthenticated)
+        {
+            var students = _studentData.GetStudents();
+            return View(students);
+        }
+        else
+        {
+            return RedirectToAction ("Login", "Account");
+        }
     }
-    
+
     public IActionResult Create()
     {
-        return View(); 
+        return View();
     }
 
     [HttpPost]
@@ -39,9 +46,14 @@ public class StudentController : Controller
         return View(student);
     }
 
+    public IActionResult Edit()
+    {
+        return View();
+    }
+
     public IActionResult Delete()
     {
-        return View(); 
+        return View();
     }
 
 }

@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using SampleSecureWeb.Models;
 
@@ -17,7 +16,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         //ViewData["username"] = "yonathandelfian";
-        ViewBag.username = "yonathandelfian";
+        ViewBag.username = User.Identity.Name;
         String[] fruits = new string[] { "Apple", "Banana", "Orange",};
         ViewBag.fruits = fruits;
         

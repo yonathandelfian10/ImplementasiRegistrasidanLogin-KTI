@@ -12,20 +12,21 @@ public class UserData : IUser
     {
         _db = db;
     }
-    public User Login (User user)
+public User Login(User user)
+{
+    var _user = _db.Users.FirstOrDefault(u => u.Username == user.Username);
+    if (_user == null)
     {
-        var _user = _db.Users.FirstOrDefault(u => u.Username == user.Username);
-        if (_user == null)
-        {
-            throw new Exception("User not found");
-        }
-        if (!BCrypt.Net.BCrypt.Verify(user.Password, _user.Password))
-        {
-            throw new Exception("Password is incorrect");
-        }
-        return _user;
+        Console.WriteLine("User not found"); // Tambahkan log
+        throw new Exception("User not found");
     }
-
+    if (!BCrypt.Net.BCrypt.Verify(user.Password, _user.Password))
+    {
+        Console.WriteLine("Password is incorrect"); // Tambahkan log
+        throw new Exception("Password is incorrect");
+    }
+    return _user;
+}
 
     public User Registration (User user)
     {

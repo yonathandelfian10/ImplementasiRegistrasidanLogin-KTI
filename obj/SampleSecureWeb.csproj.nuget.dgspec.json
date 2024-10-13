@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Sistem Informasi [smt5]\\Keamanan TI\\SampleSecureWeb\\SampleSecureWeb.csproj": {}
+    "D:\\Sistem Informasi [smt5] 1\\Keamanan TI\\SampleSecureWeb\\SampleSecureWeb.csproj": {}
   },
   "projects": {
-    "D:\\Sistem Informasi [smt5]\\Keamanan TI\\SampleSecureWeb\\SampleSecureWeb.csproj": {
+    "D:\\Sistem Informasi [smt5] 1\\Keamanan TI\\SampleSecureWeb\\SampleSecureWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Sistem Informasi [smt5]\\Keamanan TI\\SampleSecureWeb\\SampleSecureWeb.csproj",
+        "projectUniqueName": "D:\\Sistem Informasi [smt5] 1\\Keamanan TI\\SampleSecureWeb\\SampleSecureWeb.csproj",
         "projectName": "SampleSecureWeb",
-        "projectPath": "D:\\Sistem Informasi [smt5]\\Keamanan TI\\SampleSecureWeb\\SampleSecureWeb.csproj",
+        "projectPath": "D:\\Sistem Informasi [smt5] 1\\Keamanan TI\\SampleSecureWeb\\SampleSecureWeb.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Sistem Informasi [smt5]\\Keamanan TI\\SampleSecureWeb\\obj\\",
+        "outputPath": "D:\\Sistem Informasi [smt5] 1\\Keamanan TI\\SampleSecureWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
